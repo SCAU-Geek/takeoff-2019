@@ -69,7 +69,7 @@ def getNextData(data, week):
 
 
 def getNextCourse(user, passwd):
-    weekDay = datetime.datetime.now().weekday() + 1
+    weekDay = (datetime.datetime.now().weekday()+1)%7 + 1
     data = getData(user, passwd)
     return getNextData(data["data"], weekDay)
 
