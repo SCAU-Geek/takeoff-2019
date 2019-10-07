@@ -1,4 +1,4 @@
-﻿This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).该项目采用React框架，组件库用的是ant design，使用前需要先搭建好本地开发环境，详情见https://www.runoob.com/react/react-install.html
+﻿This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).该项目采用React框架，组件库用的是ant design，使用前需要先搭建好本地开发环境，详情见https://www.runoob.com/react/react-install.html ，然后打开命令行，先执行 npm install antd --save，再执行npm install命令，最后执行npm start即可。
 
 ## Available Scripts
 
