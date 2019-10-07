@@ -1,7 +1,9 @@
 ##This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).该项目采用React框架，组件库用的是ant design，使用前需要先搭建好本地开发环境。通过 npm 使用 React，如果你的系统还不支持 Node.js 及 NPM 可以参考我们https://www.runoob.com/nodejs/nodejs-install-setup.html 。
 建议在 React 中使用 CommonJS 模块系统，比如 browserify 或 webpack，本教程使用 webpack。
 国内使用 npm 速度很慢，使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
+
 $ npm install -g cnpm --registry=https://registry.npm.taobao.org
+
 $ npm config set registry https://registry.npm.taobao.org
 
 详情见https://www.runoob.com/react/react-install.html 
