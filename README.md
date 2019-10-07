@@ -6,8 +6,8 @@ $ npm install -g cnpm --registry=https://registry.npm.taobao.org
 
 $ npm config set registry https://registry.npm.taobao.org
 
-详情见https://www.runoob.com/react/react-install.html 
-搞定之后打开命令行，先cd到项目文件夹根目录下，执行 npm install antd --save，再执行npm install命令，最后执行npm start即可。
+以上步骤详情见https://www.runoob.com/react/react-install.html 
+搞定之后下载项目，打开命令行，先cd到项目文件夹根目录下，执行 npm install antd --save，再执行npm install命令，最后执行npm start即可。
 
 ## Available Scripts
 
