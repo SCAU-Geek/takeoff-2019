@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>课表测试</title>
+    <link rel="stylesheet" href="kico.css" type="text/css"/>
+    <style>
+        main{
+            padding: 1em;
+        }
+        table td:first-child{
+            width: 2em;
+        }
+
+        table td {
+            width: 20%;
+            height: 2em;
+        }
+
+        table p {
+            margin-bottom: .25em;
+        }
+
+        .form-select{ margin-bottom: 2em }
+    </style>
+    <style id="table-style"></style>
+</head>
+<body>
+<main>
+    <div class="form-select">
+        <label for="selectWeek">现在是：</label>
+        <select id="selectWeek" name="select-week">
+            <option value="1">第 1 周</option>
+            <option value="2">第 2 周</option>
+            <option value="3">第 3 周</option>
+            <option value="4">第 4 周</option>
+            <option value="5">第 5 周</option>
+            <option value="6">第 6 周</option>
+            <option value="7">第 7 周</option>
+            <option value="8">第 8 周</option>
+            <option value="9">第 9 周</option>
+            <option value="10">第 10 周</option>
+            <option value="11">第 11 周</option>
+            <option value="12">第 12 周</option>
+            <option value="13">第 13 周</option>
+            <option value="14">第 14 周</option>
+            <option value="15">第 15 周</option>
+            <option value="16">第 16 周</option>
+            <option value="17">第 17 周</option>
+        </select>
+    </div>
+    <table id="classes-list" class="fill">
+        <thead>
+        <tr class="head">
+            <th width="50"></th>
+            <th>一</th>
+            <th>二</th>
+            <th>三</th>
+            <th>四</th>
+            <th>五</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>1</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>2</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>3</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>4</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>5</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>6</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>7</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>8</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>9</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>10</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>11</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>12</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>13</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        </tbody>
+
+    </table>
+</main>
+<script src="jquery-3.2.1.min.js"></script>
+<script>
+
+    var main = {
+        style: document.getElementById("table-style"),
+        today: new Date().getDay()
+    };
+
+// 寻找表格列表
+var classesList = $("#classes-list tr:not(.head)");
+
+// 默认的 select 值
+var defaultValue = selectValue = parseInt((parseInt(new Date().getTime() / 1000) - 1567267200) / 86400 / 7) + 1;
+
+
+var select = $("#selectWeek");
+
+select[0].value = selectValue;
+
+var select1 = document.getElementById("selectWeek");
+
+select1.onchange = function(e) {
+    //console.log("已修改为" + e.target.value);
+    selectValue = parseInt(e.target.value);
+    //console.log(selectValue);
+    clear();
+    test();
+};
+
+select.change = function(e) {
+    alert(e);
+    console.log(e.target.value);
+};
+
+var classes = "";
+
+function clear () {
+    main.style.innerHTML = "";
+    $("#classes-list tr:not(.head) td").html("");
+}
+
+function test (){
+    classes.forEach(function(item, key) {
+        var singleClass = {
+            name: item[0],
+            classroom: item[1],
+            teacher: item[2],
+            day: item[3],
+            classNum: item[4],
+            classWeeks: item[5]
+        };
+
+        if (singleClass.classWeeks.indexOf(selectValue) !== -1) {
+            singleClass.classNum.forEach(function(classNum) {
+                var aaaa = singleClass.day;
+                if(!singleClass.classroom) singleClass.classroom = "暂未分配";
+                classesList[classNum - 1].children[aaaa].innerHTML = "<p>" + singleClass.name + "</p><p>" + singleClass.classroom + " 教室</p><p>" + singleClass.teacher + "</p>";
+            });
+        }
+    });
+
+    // 检查今天是星期几
+    if(main.today === 0 && selectValue === defaultValue + 1){
+        main.style.innerHTML = "table tr td:nth-child(2){ background: #ffeb3b }";
+    }
+    else if(defaultValue === selectValue){
+        main.style.innerHTML = "table tr td:nth-child(" + (main.today + 2) + "){ background: #ffeb3b }";
+    }
+}
+test();
+</script>
+
+</body>
+</html>
