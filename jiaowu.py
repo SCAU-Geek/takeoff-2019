@@ -30,14 +30,17 @@ def getdata(number,password,weeknumber):
 
 
 	s = requests.session()
-	dumpJsonData   = json.dumps(payloadData)
-	login_response = s.post(login_url , headers = headers , data = dumpJsonData)
-	login_session = login_response.cookies.get_dict()['SESSION']	
-	'''print(login_session)'''
+	login_response = s.post(login_url , headers = headers , data = json.dumps(payloadData))
+	login_session = login_response.cookies.get_dict()['SESSION']
+
+	print(login_session)
 	login_response = json.loads(login_response.text)
 	token = login_response['data']['token']
+	if not token:
+		print("密码或学号错误")
+		return
 
-	'''构造获取课表头'''
+	'''构造获取课表头
 	course_headers = {
 	'Accept': 'application/json, text/plain, */*',
 	'Accept-Encoding': 'gzip, deflate',
@@ -56,21 +59,22 @@ def getdata(number,password,weeknumber):
 	'userAgent':'' ,
 	'userRoleCode': 'student',
 	'X-Requested-With': 'XMLHttpRequest'
-	}
-	course_headers['Cookie'] = f'SESSION={login_session}; token='
+	}'''
+	headers['TOKEN']=token
+	headers['Cookie'] = f'SESSION={login_session}; token='
 	couser_payload = {"jczy013id":"2019-2020-1","pkgl002id":"W13414710000WH","zt":"2","pkzc": weeknumber}
-	dumpJsonData     = json.dumps(couser_payload)
-	course_response = s.post(course_url , headers = course_headers , data = dumpJsonData)
-	'''print(course_response.text)'''
+	course_response = s.post(course_url , headers = headers , data = json.dumps(couser_payload))
+	#print(course_response.text)
 	ddd = json.loads(course_response.text)
-
 	localtime = time.localtime(time.time())
 	course = []
 	for i in ddd['data']:
-		
-		if(int(i['pksjmx'][0])==localtime[6]+2):
+		if(int(int(i['pksjmx'][0]))==localtime[6]+2):
 			course.append(i)
-		'''print(i['pksjshow'],i['kc_name'])'''
+		print(i)
+	if not course:
+		print("明天没有课")
+		return
 	for i in course:
 		print(i['pksjshow'],i['kc_name'])
 	return course 	
@@ -79,8 +83,8 @@ def getdata(number,password,weeknumber):
 
 if __name__ == "__main__":
 	'''学号密码以及第几周'''
-	number = ""
-	password = ""
-	week = "6"
-	data = getdata(number,password,week)
+	number = input("请输入学号")
+	password = input("请输入密码")
+	week = input("请输入周数")
+	getdata(number,password,week)
 	
