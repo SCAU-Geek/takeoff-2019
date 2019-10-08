@@ -1,0 +1,29 @@
+.login-body {
+  height: calc(100vh);
+  width: calc(100vw);
+  background-image: url("./loginpic.jpg");
+  background-size: 100% 100%;
+}
+.login-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  background-color: rgba(49, 49, 49, 0.4);
+  display: grid;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+
+}
+
+#username, #password {
+  width: 300px;
+}
+.logintest {
+  margin: 20px 25px
+}
+
+

@@ -1,0 +1,57 @@
+@import '~antd/dist/antd.css';
+.menu {
+  height: 100%;
+  width: 160px !important;
+  background-color: rgba(47, 161, 229, 1);
+  color: white;
+  padding-top: 100px;
+}
+.ant-layout .ant-layout-sider.ant-layout-sider-dark {
+  width: 160px !important;
+  min-width: 160px !important;
+  max-width: 160px !important;
+  flex: 0 0 160px !important;
+}
+.ant-layout-sider-children li span {
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  color: white;
+}
+.ant-menu-item.ant-menu-item-selected {
+  background-color: white;
+  color: rgba(47, 161, 229, 1) !important;
+}
+.ant-menu-item.ant-menu-item-selected span a {
+  color: rgba(47, 161, 229, 1) !important;
+}
+.ant-menu.ant-menu-dark .ant-menu-item-selected {
+  background-color: white !important;
+}
+
+.ant-page-header {
+  padding: 0;
+}
+.ant-page-header-content {
+  padding-top: 0;
+}
+
+
+.toptop{
+  width:60%;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.Timeline{
+  width:1000px;
+  height: 300px;
+  padding-left: 5%
+}
+
+.Timeline_child{
+  font-size: 25px
+}
+.Timeline_head{
+  font-size: 300 px;
+}
