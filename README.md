@@ -1,6 +1,6 @@
 ## 多了个react-router实现网页跳转，可能要在执行 npm install antd --save之后再执行多npm i react-router-native安装这个模块。
 
-
+界面还可以更加美化一些，但周三满课，可能来不及改了qaq
 ##This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).该项目采用React框架，组件库用的是ant design，使用前需要先搭建好本地开发环境。通过 npm 使用 React，如果你的系统还不支持 Node.js 及 NPM 可以参考我们https://www.runoob.com/nodejs/nodejs-install-setup.html 。
 建议在 React 中使用 CommonJS 模块系统，比如 browserify 或 webpack，本教程使用 webpack。
 国内使用 npm 速度很慢，使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm，必须有这一步，不然npm没法用:
