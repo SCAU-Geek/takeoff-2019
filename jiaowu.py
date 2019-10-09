@@ -66,6 +66,6 @@ if __name__ == "__main__":
 	'''学号密码以及第几周'''
 	number = input("请输入学号")
 	password = input("请输入密码")
-	week = input("请输入周数")
+	week = input("请输入第几周")
 	getdata(number,password,week)
 	
