@@ -33,11 +33,12 @@ def getdata(number,password,weeknumber):
 	login_response = s.post(login_url , headers = headers , data = json.dumps(payloadData))
 	login_session = login_response.cookies.get_dict()['SESSION']
 
-	print(login_session)
+	#print(login_session)
 	login_response = json.loads(login_response.text)
-	token = login_response['data']['token']
-	if not token:
-		print("密码或学号错误")
+	try :
+		token = login_response['data']['token']
+	except:
+		print("密码或用户名错误")
 		return
 
 	headers['TOKEN']=token
