@@ -40,26 +40,6 @@ def getdata(number,password,weeknumber):
 		print("密码或学号错误")
 		return
 
-	'''构造获取课表头
-	course_headers = {
-	'Accept': 'application/json, text/plain, */*',
-	'Accept-Encoding': 'gzip, deflate',
-	'Accept-Language': 'zh-CN,zh;q=0.9',
-	'app': 'PCWEB',
-	'Connection': 'keep-alive',
-	'Content-Length': '65',
-	'Content-Type': 'application/json',
-	'Host': 'jwxt.scau.edu.cn',
-	'locale': 'zh_CN',
-	'Origin': 'http://jwxt.scau.edu.cn',
-	'Referer': 'http://jwxt.scau.edu.cn/Njw2017/index.html',
-	'Simulated-By':'', 
-	'TOKEN': token,
-	'User-Agent': 'Opera/9.80 (Windows NT 6.0) Presto/2.12.388 Version/12.14',
-	'userAgent':'' ,
-	'userRoleCode': 'student',
-	'X-Requested-With': 'XMLHttpRequest'
-	}'''
 	headers['TOKEN']=token
 	headers['Cookie'] = f'SESSION={login_session}; token='
 	couser_payload = {"jczy013id":"2019-2020-1","pkgl002id":"W13414710000WH","zt":"2","pkzc": weeknumber}
@@ -71,12 +51,12 @@ def getdata(number,password,weeknumber):
 	for i in ddd['data']:
 		if(int(int(i['pksjmx'][0]))==localtime[6]+2):
 			course.append(i)
-		print(i)
+		#print(i)
 	if not course:
 		print("明天没有课")
 		return
 	for i in course:
-		print(i['pksjshow'],i['kc_name'])
+		print(i['pksjshow'],i['kc_name'],i['js_name_1'])
 	return course 	
 
 
